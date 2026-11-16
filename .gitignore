@@ -1,0 +1,11 @@
+# Archivos locales de Visual Studio
+.vs/
+*.user
+*.suo
+
+# Salidas de compilacion de .NET
+[Bb]in/
+[Oo]bj/
+
+# Incluir el .gitignore de la raiz
+!/.gitignore
