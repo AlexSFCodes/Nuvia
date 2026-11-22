@@ -1,0 +1,40 @@
+@NuviaApi_HostAddress = http://localhost:5228
+
+GET {{NuviaApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+# Usuarios temporales: registra una cuenta antes de iniciar sesión.
+POST {{NuviaApi_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "nombre": "Usuario de prueba",
+  "correo": "usuario@example.com",
+  "rol": 0,
+  "contraseña": "ClaveDePrueba123!"
+}
+
+###
+
+POST {{NuviaApi_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "correo": "usuario@example.com",
+  "contraseña": "ClaveDePrueba123!"
+}
+
+###
+
+# Copia aquí el accessToken devuelto por el login.
+# Es un token opaco de ASP.NET Core, válido durante una hora.
+# Por ahora, renueva el acceso repitiendo el login.
+@accessToken = reemplazar_con_accessToken
+
+GET {{NuviaApi_HostAddress}}/api/auth/me
+Authorization: Bearer {{accessToken}}
+Accept: application/json
+
+###
