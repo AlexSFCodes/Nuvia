@@ -35,5 +35,10 @@ public sealed class UsuariosEnMemoria
         return _usuarios.TryGetValue(correo, out var usuario) ? usuario.Datos : null;
     }
 
+    public UsuarioAutenticadoDto? BuscarPorId(Guid id)
+    {
+        return _usuarios.Values.FirstOrDefault(usuario => usuario.Datos.Id == id)?.Datos;
+    }
+
     private sealed record Usuario(UsuarioAutenticadoDto Datos, string PasswordHash);
 }

@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Authentication.BearerToken;
 using Microsoft.AspNetCore.DataProtection;
 using NuviaApi.Modulos.Auth.Aplicacion;
 using NuviaApi.Modulos.Catalogo.Aplicacion;
+using NuviaApi.Modulos.CuentaHogar.Aplicacion;
+using NuviaApi.Modulos.CuentaHogar.Infraestructura;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -9,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddSingleton<ListarAlimentos>();
 builder.Services.AddSingleton<UsuariosEnMemoria>();
+builder.Services.AddSingleton<IRepositorioHogares, HogaresEnMemoria>();
 // Las claves y las sesiones tienen la misma duración que los usuarios en memoria.
 builder.Services.AddDataProtection().UseEphemeralDataProtectionProvider();
 builder.Services.AddAuthentication(BearerTokenDefaults.AuthenticationScheme)

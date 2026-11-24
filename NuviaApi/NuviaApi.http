@@ -38,3 +38,25 @@ Authorization: Bearer {{accessToken}}
 Accept: application/json
 
 ###
+
+# Cuenta y hogar del usuario autenticado (rol normal: 0).
+# Al consultar por primera vez: presupuesto 0, una persona y ninguna restricción.
+GET {{NuviaApi_HostAddress}}/api/cuenta-hogar
+Authorization: Bearer {{accessToken}}
+Accept: application/json
+
+###
+
+# Reemplaza el presupuesto semanal, el tamaño del hogar y los alimentos que no consume.
+# Usa "restricciones": [] para eliminar todas las restricciones.
+PUT {{NuviaApi_HostAddress}}/api/cuenta-hogar
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "presupuestoSemanal": 60.50,
+  "tamanoHogar": 4,
+  "restricciones": ["Leche entera", "Maní"]
+}
+
+###
