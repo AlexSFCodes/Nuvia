@@ -1,6 +1,11 @@
 namespace NuviaApi.Infrastructure.Persistence;
-
-public class NuviaDbContext
+using NuviaApi.Modules.Auth.Models;
+using Microsoft.EntityFrameworkCore;
+public class NuviaDbContext : DbContext
 {
-    // TODO: implementar el contexto cuando se configure la persistencia.
+    public DbSet<Usuario> Usuarios { get; set; } = null!;
+
+    public NuviaDbContext(DbContextOptions<NuviaDbContext> options) : base(options)
+    {
+    }
 }
